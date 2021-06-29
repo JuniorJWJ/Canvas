@@ -1,5 +1,5 @@
 var UP = 38, DOWN = 40, LEFT = 37, RIGHT = 39;
-var moveEsquerda = false, moveDireita = false, moveCima = false, moveBaixo = false;
+var mvLeft = mvUp = mvRight = mvDown = false;
 var cnv = document.querySelector("canvas");
 var ctx = cnv.getContext("2d");
 var p1 = {
@@ -15,46 +15,46 @@ window.addEventListener("keyup", keyUpHandler);
 function keyDownHandler(e){
     var key = e.keyCode;
     if(key === LEFT && key !== RIGHT){
-        moveEsquerda = true;
+        mvLeft = true;
     }
     if(key === RIGHT && key !== LEFT){
-        moveDireita = true;
+        mvRight = true;
     }
     if(key === UP && key !== DOWN){
-        moveCima = true;
+        mvUp = true;
     }
     if(key === DOWN && key !== UP){
-        moveBaixo = true;
+        mvDown = true;
     }
 }
 
 function keyUpHandler(e){
     var key = e.keyCode;
     if(key === LEFT && key !== RIGHT){
-        moveEsquerda = false;
+        mvLeft = false;
     }
     if(key === RIGHT && key !== LEFT){
-        moveDireita = false;
+        mvRight = false;
     }
     if(key === UP && key !== DOWN){
-        moveCima = false;
+        mvUp = false;
     }
     if(key === DOWN && key !== UP){
-        moveBaixo = false;
+        mvDown = false;
     }
 } 
 
 function move(){
-    if(moveEsquerda){
+    if(mvLeft){
         p1.x--;
     }
-    if(moveDireita){
+    if(mvRight){
         p1.x++
     }
-    if(moveCima){
+    if(mvUp){
         p1.y--;
     }
-    if(moveBaixo){
+    if(mvDown){
         p1.y++
     }
 }
